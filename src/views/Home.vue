@@ -4,7 +4,7 @@
       <TelestoHeader />
     </header>
     <div class="telesto-home-content">
-      <TelestoContent />
+      <router-view />
     </div>
     <footer class="telesto-home-footer">
       <TelestoFooter />
@@ -15,41 +15,42 @@
 <script>
 import TelestoHeader from './T-header'
 import TelestoFooter from './T-footer'
-import TelestoContent from './T-content'
 
 export default {
   name: 'Home',
   components: {
     TelestoHeader,
-    TelestoFooter,
-    TelestoContent
+    TelestoFooter
   }
 }
 </script>
 <style lang="less">
+@fontColor: #22292F;
 .telesto-home-page {
+  position: relative;
   width: 100%;
-  font-family: "Good Pro Condensed,Roboto,PingFangSC-regular,Microsoft YaHei, Helvetica Neue,Helvetica, sans-serif";
+  height: 100vh;
+  padding: 1rem 1.4rem;
+  box-sizing: border-box;
+  font-size: 20px;
+  color: @fontColor;
+
   .telesto-home-header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    z-index: 99;
+    width: 100%;
   }
+
   .telesto-home-content {
-    width: 1300px;
-    height: 560px;
-    margin: 0 auto;
-    padding-top: 136px;
+    margin-top: 48px;
+    margin-left: 80px;
+    padding-left: .2rem;
   }
+
   .telesto-home-footer {
-    display: flex;
-    justify-content: center;
-    align-content: cneter;
-    width: 1300px;
-    height: 60px;
-    background-color: #404040;
-    margin: 0 auto;
+    position: fixed;
+    bottom: 6px;
+    right: 0;
+    padding-right: 1rem;
+    z-index: 99;
   }
 }
 </style>

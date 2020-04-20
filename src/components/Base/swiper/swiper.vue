@@ -40,8 +40,8 @@ export default {
 
 <style lang="less">
 .swiper {
-  width: 320px;
-  height: 100%;
+  flex-basis: 320px;
+  height: 60px;
   .swiper-slide {
     cursor: pointer;
   }

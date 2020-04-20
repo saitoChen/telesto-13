@@ -1,61 +1,75 @@
 <template>
   <div class="telesto-header">
-    <div class="telesto-header-leftbar">Telesto-13</div>
-    <div class="telesto-header-searchbar">Search</div>
-    <div class="telesto-header-rightbar">
-      <HeaderSwiper :width="320"  :swiperData="swiperData" />
+    <div class="telesto-header__info">
+      <div class="telesto-header__avator"></div>
+      <div class="telesto-header__name" @click="toPath('')">Telesto-13</div>
     </div>
+    <nav class="telesto-nav">
+      <ul class="telesto-nav__list">
+        <li class="telesto-nav__items" v-for="(nav, index) in navs" :key="index" @click="toPath(nav.path)">{{nav.name}}</li>
+      </ul>
+    </nav>
   </div>
 </template>
 <script>
-import HeaderSwiper from '../components/Base/swiper'
 export default {
   data(){
     return {
-      swiperData: [
+      navs: [
         {
-          img: require('../assets/img/header/ad.png'),
-          url: '#'
+          name: '文章',
+          path: 'articles'
         },
         {
-          img: require('../assets/img/header/Easy-Todo.png'),
-          url: '#'
+          name: 'SVG&CANVAS',
+          path: 'svg&canvas'
         }
       ]
     }
   },
-  components: {
-    HeaderSwiper
+  methods: {
+    toPath(path){
+      this.$router.push(`/${path}`)
+    }
   }
 }
 </script>
 <style lang="less">
+@focusFontColor: #22292F;
 .telesto-header {
-  position: fixed;
-  display: flex;
-  width: 1300px;
-  height: 60px;
-  background-color: #fff;
-
-  .telesto-header-leftbar {
-    text-align: center;
-    line-height: 60px;;
-    flex-basis: 200px;;
-    border-right: 1px solid #ddd;
-    width: 200px;
-    height: 60px;
-    font-weight: 700;
+  padding: 0 .2rem;
+  .telesto-header__info {
+    display: flex;
+    align-items: center;
+    .telesto-header__avator {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      background: url('../assets/img/black.jpg') no-repeat;
+      background-size: cover;
+    }
+    .telesto-header__name {
+      cursor: pointer;
+      font-size: 30px;
+    }
   }
-
-  .telesto-header-searchbar {
-    flex: 1;
-    line-height: 60px;
-    text-align: left;
-    border-right: 1px solid #ddd;
-  }
-
-  .telesto-header-rightbar {
-    flex-basis: 320px;
+  .telesto-nav {
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #8795A1;
+    ul {
+      display: flex;
+      padding-left: 80px;
+      list-style-type: none;
+      .telesto-nav__items {
+        margin-right: 20px;
+        cursor: pointer;
+        &:hover{
+          color: @focusFontColor;
+        }
+      }
+    }
   }
 }
 </style>
