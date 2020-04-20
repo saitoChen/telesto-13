@@ -3,7 +3,9 @@
     <header class="telesto-home-header">
       <TelestoHeader />
     </header>
-    <div class="telesto-home-content"></div>
+    <div class="telesto-home-content">
+      <TelestoContent />
+    </div>
     <footer class="telesto-home-footer">
       <TelestoFooter />
     </footer>
@@ -13,11 +15,14 @@
 <script>
 import TelestoHeader from './T-header'
 import TelestoFooter from './T-footer'
+import TelestoContent from './T-content'
+
 export default {
   name: 'Home',
   components: {
     TelestoHeader,
-    TelestoFooter
+    TelestoFooter,
+    TelestoContent
   }
 }
 </script>
@@ -33,7 +38,7 @@ export default {
   }
   .telesto-home-content {
     width: 1300px;
-    height: 700px;
+    height: 560px;
     margin: 0 auto;
     padding-top: 136px;
   }

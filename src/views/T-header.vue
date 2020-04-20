@@ -2,12 +2,31 @@
   <div class="telesto-header">
     <div class="telesto-header-leftbar">Telesto-13</div>
     <div class="telesto-header-searchbar">Search</div>
-    <div class="telesto-header-rightbar"></div>
+    <div class="telesto-header-rightbar">
+      <HeaderSwiper :width="320"  :swiperData="swiperData" />
+    </div>
   </div>
 </template>
 <script>
+import HeaderSwiper from '../components/Base/swiper'
 export default {
-  
+  data(){
+    return {
+      swiperData: [
+        {
+          img: require('../assets/img/header/ad.png'),
+          url: '#'
+        },
+        {
+          img: require('../assets/img/header/Easy-Todo.png'),
+          url: '#'
+        }
+      ]
+    }
+  },
+  components: {
+    HeaderSwiper
+  }
 }
 </script>
 <style lang="less">
@@ -23,6 +42,9 @@ export default {
     line-height: 60px;;
     flex-basis: 200px;;
     border-right: 1px solid #ddd;
+    width: 200px;
+    height: 60px;
+    font-weight: 700;
   }
 
   .telesto-header-searchbar {
@@ -34,7 +56,6 @@ export default {
 
   .telesto-header-rightbar {
     flex-basis: 320px;
-    background: url('../assets/img/ad.png') no-repeat;
   }
 }
 </style>
