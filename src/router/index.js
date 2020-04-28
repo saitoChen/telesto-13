@@ -13,7 +13,7 @@ Vue.use(VueRouter)
       {
         path: '/homePage',
         name: 'homePage',
-        component: () => import(/* webpackChunkName: "HomeContent" */ '../views/HomeContent.vue')
+        component: () => import(/* webpackChunkName: "HomeContent" */ '../components/Home/HomeContent.vue')
       },
       {
         path: '/articles',
@@ -23,7 +23,7 @@ Vue.use(VueRouter)
       {
         path: '/svg&canvas',
         name: 'svg&canvas',
-        component: () => import(/* webpackChunkName: "Svg&Canvas" */ '../views/Svg&Canvas.vue')
+        component: () => import(/* webpackChunkName: "Svg&Canvas" */ '../components/Home/Svg&Canvas.vue')
       },
     ],
     redirect: '/homePage'
@@ -32,6 +32,39 @@ Vue.use(VueRouter)
     path: '/articleDetail/:id',
     name: 'detail',
     component: () => import(/* webpackChunkName: "ArticleDetail" */ '../views/ArticleDetail.vue'),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue'),
+    redirect: '/admin/adminHome',
+    children: [
+      {
+        path: '/admin/adminHome',
+        name: 'adminHome',
+        component: () => import(/* webpackChunkName: "adminHome" */ '../components/Admin/adminHome.vue')
+      },
+      {
+        path: '/admin/adminArticle',
+        name: 'adminArticle',
+        component: () => import(/* webpackChunkName: "adminArticle" */ '../components/Admin/adminArticle.vue')
+      },
+      {
+        path: '/admin/adminData',
+        name: 'adminData',
+        component: () => import(/* webpackChunkName: "adminData" */ '../components/Admin/adminData.vue')
+      }
+    ]
+  },
+  {
+    path: '/editor',
+    name: 'editor',
+    component: () => import(/* webpackChunkName: "editor" */ '../views/editor.vue')
   }
 ]
 

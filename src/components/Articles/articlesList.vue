@@ -2,7 +2,7 @@
   <ul class="articles__list">
     <li class="articles__items" v-for="( article, index ) in list" :key="index" >
       <div class="articles__items-time">{{ now }}</div>
-      <div class="articles__items-title" :style="{fontSize: mode === 'list' ? '18px' : '24px' }"  @click="toArticle(article.id)" >{{ article.name }}</div>
+      <div class="articles__items-title" :style="{fontSize: mode === 'list' ? '18px' : '24px' }"  @click="toArticle(article.article_id)" >{{ article.title }}</div>
       <div v-if="mode === 'sub'" class="articles__items-description">{{ article.description }}</div>
       <div v-if="mode === 'sub'" class="articles__items-more">
         <span>阅读这篇文章</span>

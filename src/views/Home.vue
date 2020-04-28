@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import TelestoHeader from './T-header'
-import TelestoFooter from './T-footer'
+import TelestoHeader from '../components/Home/T-header'
+import TelestoFooter from '../components/Home/T-footer'
 
 export default {
   name: 'Home',

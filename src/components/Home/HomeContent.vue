@@ -1,10 +1,10 @@
 <template>
-  <div class="articles">
-    <ArticlesList :mode="'list'" :list='articlesList' />
+  <div class="telesto-content">
+    <ArticlesList :list='articlesList' />
   </div>
 </template>
 <script>
-import ArticlesList from '../components/Articles/articlesList'
+import ArticlesList from '../Articles/articlesList'
 export default {
   components: {
     ArticlesList
@@ -19,7 +19,12 @@ export default {
   },
   methods: {
     renderList(){
-      this.$api.article.getArticleList().then(res => {
+      this.$api.article.getArticleList({
+        params: {
+          isHomePage: true
+        }
+      }).then(res => {
+        console.log(res)
         if (res.success) {
           this.articlesList = res.data.list
         }

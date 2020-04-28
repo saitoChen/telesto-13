@@ -17,7 +17,11 @@ export default {
     return {
       navs: [
         {
-          name: '文章',
+          name: 'HOME',
+          path: 'homePage'
+        },
+        {
+          name: 'ARTICLES',
           path: 'articles'
         },
         {
@@ -29,7 +33,7 @@ export default {
   },
   methods: {
     toPath(path){
-      this.$router.push(`/${path}`)
+      this.$router.push(`/${path}`).catch(data => {  })
     }
   }
 }
@@ -45,7 +49,7 @@ export default {
       width: 60px;
       height: 60px;
       margin-right: 20px;
-      background: url('../assets/img/black.jpg') no-repeat;
+      background: url('../../assets/img/black.jpg') no-repeat;
       background-size: cover;
     }
     .telesto-header__name {

@@ -8,9 +8,10 @@
 @bgColor: #ececec;
 
 #app {
-  font-family: Good Pro Condensed,Roboto, PingFangSC-regular, Microsoft YaHei, Helvetica Neue,Helvetica, sans-serif;
+  font-family: PingFangSC-regular, Microsoft YaHei, Helvetica Neue,Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
   color: #2c3e50;
   background-color: #fff;
 }

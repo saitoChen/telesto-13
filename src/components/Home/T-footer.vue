@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import swiperPlayer from '../components/Base/swiper/swiper'
+import swiperPlayer from '../Base/swiper/swiper'
 export default {
   components: {
     swiperPlayer
@@ -16,11 +16,11 @@ export default {
     return {
       swiperData: [
         {
-          img: require('../assets/img/header/ad.png'),
+          img: require('../../assets/img/header/ad.png'),
           url: '#'
         },
         {
-          img: require('../assets/img/header/Easy-Todo.png'),
+          img: require('../../assets/img/header/Easy-Todo.png'),
           url: '#'
         }
       ],
