@@ -30,7 +30,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100vh;
-  padding: 1rem 1.4rem;
+  padding: 30px 1.4rem;
   box-sizing: border-box;
   font-size: 20px;
   color: @fontColor;

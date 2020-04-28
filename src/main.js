@@ -8,6 +8,7 @@ import VueAxios from 'vue-axios'
 import api from './api/index'
 import { Button, Input, Message, Table, TableColumn } from 'element-ui';
 import Vue2Editor from "vue2-editor";
+import './assets/icon/iconfont.css'
 
 Vue.use(Button)
 Vue.use(Input)

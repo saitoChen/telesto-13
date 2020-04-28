@@ -2,7 +2,7 @@
   <div class="editor">
     <div class="editor-operation">
       <el-button class="editor-back-btn" @click="back" >后退</el-button>
-      <el-button class="editor-save-btn" type="primary" @click="saveArticle">保存文章</el-button>
+      <el-button class="editor-save-btn" type="primary" @click="save">保存文章</el-button>
     </div>
     <div class="editor-title">
       <el-input class="editor-title-input" v-model="title" placeholder="请输入标题"></el-input>
@@ -14,13 +14,14 @@
       <el-input type="textarea" :rows="2" class="editor-description-input" v-model="description" placeholder="请输入摘要"></el-input>
     </div>
     <div class="editor-content">
-      <vue-editor id="editor" v-model="content" useCustomImageHandler @imageAdded="handleImageAdded"  />
+      <vue-editor id="editor" v-model="content" useCustomImageHandler @image-added="handleImageAdded"  />
     </div>
   </div>
 </template>
 
 <script>
 import { VueEditor } from "vue2-editor";
+import axios from 'axios'
 
 export default {
   components: { 
@@ -33,11 +34,15 @@ export default {
       title: '',
       author: '',
       description: '',
-      article_id: ''
+      article_id: '',
+      article_status: 'add'
     }
   },
   created(){
-    this.getArticleDetail()
+    if (this.$route.query.id) {
+      this.getArticleDetail()
+      this.article_status = 'update'
+    }
   },
   mounted(){
 
@@ -46,21 +51,26 @@ export default {
     back(){
       history.go(-1)
     },
-    getArticleDetail(){
+    save() {
       if (this.$route.query.id) {
-        this.$api.admin.getAdminArticleDetail({
-          params: {
-            article_id: this.$route.query.id
-          }
-        })
-        .then(res => {
-          let {title, description, author, content} = res.data
-          this.content = content
-          this.title = title
-          this.description = description
-          this.author = author
-        })
+        this.updateArticle()
+      } else {
+        this.saveArticle()
       }
+    },
+    getArticleDetail(){
+      this.$api.admin.getAdminArticleDetail({
+        params: {
+          article_id: this.$route.query.id
+        }
+      })
+      .then(res => {
+        let {title, description, author, content} = res.data
+        this.content = content
+        this.title = title
+        this.description = description
+        this.author = author
+      })
     },
     saveArticle(){
       this.$api.admin.postAdminNewArticle({
@@ -85,27 +95,47 @@ export default {
         })
       })
     },
-    handleImageAdded(file, Editor, cursorLocation, resetUploader) {
-
-      console.log(file)
-      console.log(Editor)
-
-      var formData = new FormData();
-      formData.append("image", file);
-
-      axios({
-        url: "https://fakeapi.yoursite.com/images",
-        method: "POST",
-        data: formData
+    updateArticle() {
+      this.$api.admin.updateAdminArticle({
+        article_id: this.$route.query.id,
+        author: this.author,
+        title: this.title,
+        description: this.description,
+        content: JSON.stringify(this.content)
       })
-      .then(result => {
-        let url = result.data.url; // Get url from response
-        Editor.insertEmbed(cursorLocation, "image", url);
-        resetUploader();
+      .then(res => {
+        if (res.success) {
+          this.$message({
+            message: '保存成功',
+            type: 'success'
+          })
+        }
       })
       .catch(err => {
-        console.log(err);
-      });
+        this.$message({
+          message: '保存失败，请重新尝试',
+          type: 'error'
+        })
+      })
+    },
+    handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+      var param = new FormData();
+      param.append("image", file);
+      axios.post('/api/admin/postImg/', param ,{
+        headers:{
+          "Content-Type": "multipart/form-data" ,
+          "common" : {
+            Authorization: "Bearer " + window.localStorage.getItem('token')
+          }
+        }
+      })
+      .then(response=>{
+        Editor.insertEmbed(cursorLocation, "image", response.data.data.path);
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err)
+      })     
     }
   }  
 };
@@ -113,8 +143,7 @@ export default {
 
 <style lang="less">
 .editor {
-  padding: 20px 40px 0 40px;
-
+  padding: 20px 40px 80px 40px;
   .editor-title, .editor-author, .editor-description, .editor-content {
     margin-top: 30px;
   }

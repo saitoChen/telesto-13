@@ -12,6 +12,10 @@ const admin = {
   postAdminNewArticle: function(params) {
     addToken()
     return http.post('/api/admin/postArticle', params)
+  },
+  updateAdminArticle: function(params) {
+    addToken()
+    return http.put('/api/admin/updateArticle', params)
   }
 }
 

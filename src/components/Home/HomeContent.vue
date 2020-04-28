@@ -24,7 +24,6 @@ export default {
           isHomePage: true
         }
       }).then(res => {
-        console.log(res)
         if (res.success) {
           this.articlesList = res.data.list
         }

@@ -8,6 +8,9 @@ const service = axios.create({
     },
     post: {
       'Content-Type': 'application/json;charset=utf-8'
+    },
+    put: {
+      'Content-Type': 'application/json;charset=utf-8'
     }
   },
   withCredentials: true,

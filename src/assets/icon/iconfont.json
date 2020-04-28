@@ -1,0 +1,37 @@
+{
+  "id": "1764630",
+  "name": "telesto",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14401874",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "14401873",
+      "name": "arrow_right",
+      "font_class": "arrow_right",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "14175406",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "14175400",
+      "name": "planet",
+      "font_class": "planet",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    }
+  ]
+}
