@@ -1,7 +1,7 @@
 <template>
   <ul class="articles__list">
     <li class="articles__items" v-for="( article, index ) in list" :key="index" >
-      <div class="articles__items-time">{{ now }}</div>
+      <div class="articles__items-time">{{ article.create_time }}</div>
       <div class="articles__items-title" :style="{fontSize: mode === 'list' ? '18px' : '24px' }"  @click="toArticle(article.article_id)" >{{ article.title }}</div>
       <div v-if="mode === 'sub'" class="articles__items-description">{{ article.description }}</div>
       <div v-if="mode === 'sub'" class="articles__items-more">
@@ -14,7 +14,7 @@
   </ul>
 </template>
 <script>
-import {nowDate} from '../../utils/moment'
+import {formateDate} from '../../utils/moment'
 export default {
   props: {
     'list': {
@@ -26,9 +26,16 @@ export default {
       default: 'sub'
     }
   },
-  data(){
-    return {
-      now: `${nowDate().year}年${nowDate().month}月${nowDate().day}日`
+  watch: {
+    list: {
+      handler(val){
+        if (val.length > 0) {
+          val.forEach(item => {
+            item.create_time = formateDate(item.create_time)
+          })
+        }
+      },
+      immediate: true
     }
   },
   methods: {

@@ -130,8 +130,10 @@ export default {
         }
       })
       .then(response=>{
-        Editor.insertEmbed(cursorLocation, "image", response.data.data.path);
-        console.log(response.data);
+        /* Editor.insertEmbed(cursorLocation, "image", response.data.data.path); */
+        setTimeout(() => {
+          Editor.insertEmbed(cursorLocation, "image", response.data.data.path);
+        }, 1000)
       })
       .catch(err => {
         console.log(err)

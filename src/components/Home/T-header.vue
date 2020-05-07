@@ -2,7 +2,7 @@
   <div class="telesto-header">
     <div class="telesto-header__info">
       <div class="telesto-header__avator"></div>
-      <div class="telesto-header__name" @click="toPath('')">Telesto Jeff</div>
+      <div class="telesto-header__name" @click="toPath('')">Telesto Tech</div>
     </div>
     <nav class="telesto-nav">
       <ul class="telesto-nav__list">
@@ -50,7 +50,7 @@ export default {
       width: 60px;
       height: 60px;
       margin-right: 20px;
-      background: url('../../assets/img/giphy.gif') no-repeat;
+      background: url('/giphy.gif') no-repeat;
       background-size: cover;
     }
     .telesto-header__name {
