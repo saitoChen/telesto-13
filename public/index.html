@@ -37,6 +37,30 @@
     <!-- <div class="lovely-cat">
       <iframe class="cat" src="https://zhanyuzhang.github.io/lovely-cat/cat.html" border="0"></iframe>
     </div> -->
+    <script>
+      function is_mobile() {
+          var regex_match = /(nokia|iphone|android|motorola|^mot-|softbank|foma|docomo|kddi|up.browser|up.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte-|longcos|pantech|gionee|^sie-|portalmmm|jigs browser|hiptop|^benq|haier|^lct|operas*mobi|opera*mini|320x320|240x320|176x220)/i;
+          var u = navigator.userAgent;
+          if (null == u) {
+              return true;
+          }
+          var result = regex_match.exec(u);
+          if (null == result) {
+              return false
+          } else {
+              return true
+          }
+      }
+      if (is_mobile()) {
+          let href = window.location.href
+          if (href.indexOf('www') > 0) {
+            let newHref = href.replace(/www/, 'm')
+            window.location.href = newHref
+          } else {
+            
+          }
+      }
+    </script>
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/vuex/3.1.3/vuex.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
