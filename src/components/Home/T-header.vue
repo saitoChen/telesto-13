@@ -2,7 +2,7 @@
   <div class="telesto-header">
     <div class="telesto-header__info">
       <div class="telesto-header__avator"></div>
-      <div class="telesto-header__name" @click="toPath('')">Telesto Tech</div>
+      <div class="telesto-header__name" @click="toPath('')">Telesto</div>
     </div>
     <nav class="telesto-nav">
       <ul class="telesto-nav__list">
