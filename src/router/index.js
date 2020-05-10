@@ -23,7 +23,7 @@ Vue.use(VueRouter)
       {
         path: '/svg&canvas',
         name: 'svg&canvas',
-        component: () => import(/* webpackChunkName: "Svg&Canvas" */ '../components/Home/Svg&Canvas.vue')
+        component: () => import(/* webpackChunkName: "Svg&Canvas" */ '../components/Svg/Svg&Canvas.vue')
       },
     ],
     redirect: '/homePage'
