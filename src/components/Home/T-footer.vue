@@ -17,11 +17,11 @@ export default {
       swiperData: [
         {
           img: require('../../assets/img/header/ad.png'),
-          url: '#'
+          url: ''
         },
         {
           img: require('../../assets/img/header/Easy-Todo.png'),
-          url: '#'
+          url: 'https://github.com/saitoChen/Easy-Todo/releases/tag/0.0.1'
         }
       ],
       text: `苏ICP备20019769号`

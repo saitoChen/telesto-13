@@ -2,7 +2,9 @@
   <div class="telesto-header">
     <div class="telesto-header__info">
       <div class="telesto-header__avator"></div>
-      <div class="telesto-header__name" @click="toPath('')">Telesto</div>
+      <div class="telesto-header__name" @click="toPath('')">
+        <SvgTelesto :width="130" :height="50" :play="true" />
+      </div>
     </div>
     <nav class="telesto-nav">
       <ul class="telesto-nav__list">
@@ -12,6 +14,7 @@
   </div>
 </template>
 <script>
+import SvgTelesto from '../Svg/telesto-text'
 export default {
   data(){
     return {
@@ -30,6 +33,9 @@ export default {
         }
       ]
     }
+  },
+  components: {
+    SvgTelesto
   },
   methods: {
     toPath(path){
@@ -55,8 +61,9 @@ export default {
     }
     .telesto-header__name {
       cursor: pointer;
-      font-size: 30px;
-      font-weight: 800;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
   }
   .telesto-nav {

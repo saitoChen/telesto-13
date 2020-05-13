@@ -5,6 +5,7 @@
       :key="index" 
     >
       <img v-if="swiper.img" :src="swiper.img" alt="png" />
+      <a v-if="swiper.url" target="_blank" class="swiper-url" :href="swiper.url"></a>
     </swiper-slide>
   </swiper>
 </template>
@@ -44,6 +45,13 @@ export default {
   height: 60px;
   .swiper-slide {
     cursor: pointer;
+    .swiper-url {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

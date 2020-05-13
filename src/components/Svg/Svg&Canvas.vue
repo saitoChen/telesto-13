@@ -5,11 +5,11 @@
         <div class="svg-description">
           <a :href="svg.svg_url" class="svg-base-desc svg-source">源码</a>
           <a :href="svg.img_url" v-if="svg.img_url"  class="svg-base-desc svg-img-source">源码</a>
-          <i class="iconfont iconreset" @click="stop" />
-          <i class="iconfont" :class="{'iconplay': !play, 'iconstop':play}" @click="play=true" />
+          <i class="iconfont iconreset" @click="stop(svg.name)" />
+          <i class="iconfont" :class="{'iconplay': !play[svg.name], 'iconstop':play[svg.name]}" @click="start(svg.name)" />
         </div>
-        <div class="svg-show">
-          <component :is="svg.component" :play="play" />
+        <div class="svg-show" :class="`svg-${svg.name}`">
+          <component :is="svg.component" :play="play[svg.name]" />
         </div>
       </li>
     </ul>
@@ -18,28 +18,37 @@
 </template>
 <script>
 import SvgCheck from './check'
+import SvgTelesto from './telesto-text'
 export default {
   data(){
     return {
-      play: false,
+      play: {},
       svgList: [
         {
           svg_url: 'http://jsrun.net/F62Kp/edit',
           img_url: '',
+          name: 'check',
           component: 'SvgCheck'
+        },
+        {
+          svg_url: 'http://jsrun.net/I32Kp/edit',
+          img_url: '',
+          name: 'telesto',
+          component: 'SvgTelesto'
         }
       ]
     }
   },
   components: {
-    SvgCheck
+    SvgCheck,
+    SvgTelesto
   },
   methods: {
-    start(){
-      this.play = true
+    start(name){
+      this.$set(this.play, name, true)
     },
-    stop(){
-      this.play = false
+    stop(name){
+      this.$set(this.play, name, false)
     }
   }
 }
@@ -98,6 +107,12 @@ export default {
         .svg-show {
           width: 200px;
           height: 200px;
+        }
+        .svg-telesto {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-top: -20px;
         }
       }
 
