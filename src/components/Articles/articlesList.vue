@@ -1,7 +1,13 @@
 <template>
   <ul class="articles__list">
     <li class="articles__items" v-for="( article, index ) in list" :key="index" >
-      <div class="articles__items-time">{{ article.create_time }}</div>
+      <div class="article__items-top">
+        <div class="articles__items-time">{{ article.create_time }}</div>
+        <div v-if="article.tag_ids.length > 0" class="articles__items-split">.</div>
+        <ul v-if="article.tag_ids.length > 0"  class="articles__items-tags">
+          <li class="items-tag" v-for="(tag, index) in article.tag_ids" :key="index">{{tag.tag_name}}</li>
+        </ul>
+      </div>
       <div class="articles__items-title" :style="{fontSize: mode === 'list' ? '18px' : '24px' }"  @click="toArticle(article.article_id)" >{{ article.title }}</div>
       <div v-if="mode === 'sub'" class="articles__items-description">{{ article.description }}</div>
       <div v-if="mode === 'sub'" class="articles__items-more">
@@ -56,10 +62,29 @@ export default {
   text-align: left;
   .articles__items {
     margin-bottom: 30px;
-    .articles__items-time {
+    .article__items-top {
+      display: flex;
+      align-items: center;
       margin-bottom: 6px;
-      font-size: 14px;
+      font-size: 13px;
       color: @fontColor;
+      .articles__items-split {
+        margin: -8px 4px 0 4px;
+        font-size: 18px;
+      }
+      .articles__items-tags {
+        display: flex;
+        list-style-type: none;
+        font-size: 13px;
+        .items-tag:after {
+          content: '/'
+        }
+        .items-tag:last-child {
+          &:after{
+            content: ''
+          }
+        }
+      }
     }
     .articles__items-title {
       cursor: pointer;
@@ -78,7 +103,7 @@ export default {
     .articles__items-more {
       margin-top: 10px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       color: @fontColor;
       .articles__more:hover {
         text-decoration: underline;
