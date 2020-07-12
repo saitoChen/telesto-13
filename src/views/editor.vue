@@ -287,7 +287,7 @@ export default {
             Editor.insertEmbed(
               cursorLocation,
               "image",
-              response.data.data.path
+              response.data.data.paths
             );
           }, 1000);
         })
